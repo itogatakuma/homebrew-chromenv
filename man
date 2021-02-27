@@ -1,0 +1,19 @@
+[COMMANDS]
+- versions
+  show enable versions.
+
+- install [version number]
+  install google-chrome and chromedriver.
+
+- install -l
+  show installable versions.
+
+- global [version number]
+  set global version of google-chrome and chromedriver version.
+
+- help
+   show manual.
+
+[WIP]
+local -- set local version of google-chrome and chromedriver version.
+update -- update installable versions.

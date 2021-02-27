@@ -1,0 +1,25 @@
+#!/bin/sh
+cd `dirname $0`
+cd ../
+CHROMENV_HOME=$(pwd)
+# CHROMENV_HOME=$HOME/.chemenv
+NOW_VERSION=$(cat $CHROMENV_HOME/default_version)
+
+if [ $1 = "versions" ]; then
+  ls -1 $CHROMENV_HOME/versions | xargs -I {} echo "  {}" | sed "s/  $NOW_VERSION/* $NOW_VERSION/g"
+elif [ $1 = "update" ]; then
+  source $CHROMENV_HOME/src/update
+elif [ $1 = "install" ]; then
+  if [ $2 = "-l" ]; then
+    source $CHROMENV_HOME/src/install-l
+  else
+    source $CHROMENV_HOME/src/install
+  fi
+elif [ $1 = "global" ]; then
+  source $CHROMENV_HOME/src/global
+elif [ $1 = "local" ]; then
+  echo "[WIP] will set local chromenv"
+elif [ $1 = "help" ]; then
+  echo "[WIP] will set local chromenv"
+  cat $CHROMENV_HOME/man
+fi

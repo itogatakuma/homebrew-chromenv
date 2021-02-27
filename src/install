@@ -1,0 +1,31 @@
+#!/bin/sh
+chromelinkurl=$(cat $CHROMENV_HOME/master/google-chrome/google-chrome.json | jq -r ".data | map(select( .[\"version\"] == \"$2\" )) | .[0].versionURL")
+CHROME_MAJOR_VERSION=$(echo $2 | awk -F '.' '{print $1}')
+DRIVER_VERSION=$(cat $CHROMENV_HOME/master/chromedriver/corresponds/$CHROME_MAJOR_VERSION | sort -V | tail -n 1)
+DRIVER_PATH=$(cat $CHROMENV_HOME/master/chromedriver/versions/mac64 | grep $DRIVER_VERSION/)
+driverurl=https://chromedriver.storage.googleapis.com/$DRIVER_PATH
+# ディレクトリ生成
+mkdir $CHROMENV_HOME/versions/$2
+mkdir $CHROMENV_HOME/versions/$2/drivers
+touch $CHROMENV_HOME/versions/$2/drivers/default_version
+mkdir $CHROMENV_HOME/versions/$2/app
+# chromedriverダウンロード
+curl -o $CHROMENV_HOME/versions/$2/drivers/chromedriver$2.zip $driverurl
+unzip -d $CHROMENV_HOME/versions/$2/drivers/ $CHROMENV_HOME/versions/$2/drivers/chromedriver$2.zip
+rm $CHROMENV_HOME/versions/$2/drivers/chromedriver$2.zip
+mv $CHROMENV_HOME/versions/$2/drivers/chromedriver $CHROMENV_HOME/versions/$2/drivers/chromedriver$2
+echo $2 > $CHROMENV_HOME/versions/$2/drivers/default_version
+# chromeダウンロード
+sleep 0.5
+a_tag=$(curl $chromelinkurl | grep detail-download-button)
+if [[ $a_tag =~ href=\"([^\"]*)\" ]]; then
+  chromeurl=${BASH_REMATCH[1]}
+  sleep 0.5
+  curl -L -o $CHROMENV_HOME/versions/$2/app/Google\ Chrome$2.dmg $chromeurl
+  echo $CHROMENV_HOME/versions/$2/app/Google\ Chrome$2.dmg
+  hdiutil mount -nobrowse $CHROMENV_HOME/versions/$2/app/Google\ Chrome$2.dmg
+  cp -rf /Volumes/Google\ Chrome/Google\ Chrome.app $CHROMENV_HOME/versions/$2/app/Google\ Chrome$2.app
+  hdiutil unmount /Volumes/Google\ Chrome
+else
+  echo 'failed install google-chrome'
+fi
