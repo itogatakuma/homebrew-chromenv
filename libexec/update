@@ -19,12 +19,12 @@ mkdir $CHROMENV_HOME/master
 mkdir $CHROMENV_HOME/master/google-chrome
 rm -rf $CHROMENV_HOME/master/google-chrome/versions
 mkdir $CHROMENV_HOME/master/google-chrome/versions
-# curl 'https://google-chrome.en.uptodown.com/mac/apps/10755/versions' > $CHROMENV_HOME/master/google-chrome/google-chrome.json
+curl 'https://google-chrome.en.uptodown.com/mac/apps/10755/versions' > $CHROMENV_HOME/master/google-chrome/google-chrome.json
 cat $CHROMENV_HOME/master/google-chrome/google-chrome.json | jq -r '.data[].version' > $CHROMENV_HOME/master/google-chrome/versions/mac
 
 # chromedriver
-mkdir $CHROMENV_HOME/chromedriver
-#curl 'https://chromedriver.storage.googleapis.com/' > $CHROMENV_HOME/master/chromedriver/chromedriver.xml
+mkdir $CHROMENV_HOME/master/chromedriver
+curl 'https://chromedriver.storage.googleapis.com/' > $CHROMENV_HOME/master/chromedriver/chromedriver.xml
 rm -rf $CHROMENV_HOME/master/chromedriver/versions
 mkdir $CHROMENV_HOME/master/chromedriver/versions
 rm -rf $CHROMENV_HOME/master/chromedriver/corresponds
