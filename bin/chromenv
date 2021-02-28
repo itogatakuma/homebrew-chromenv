@@ -6,7 +6,7 @@ touch $CHROMENV_HOME/default_version
 NOW_VERSION=$(cat $CHROMENV_HOME/default_version)
 
 if [ $1 = "versions" ]; then
-  ls -1 $CHROMENV_HOME/versions | xargs -I {} echo "  {}" | sed "s/  $NOW_VERSION/* $NOW_VERSION/g"
+  source $CHROMENV_HOME/libexec/versions
 elif [ $1 = "update" ]; then
   source $CHROMENV_HOME/libexec/update
 elif [ $1 = "install" ]; then
