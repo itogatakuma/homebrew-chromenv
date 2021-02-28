@@ -1,4 +1,4 @@
-# 【WIP】Chromenv
+# Chromenv (experimental)
 ## 概要
 google-chromeとchromedriverのバージョン管理CLIツール。
 MacOSのみ対応。
