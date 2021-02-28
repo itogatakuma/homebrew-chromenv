@@ -13,6 +13,7 @@ class HomebrewChromenv < Formula
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
+    puts 'installメソッドだよ'
     bin.install "homebrew-chromenv"
     # system "cmake", ".", *std_cmake_args
   end
