@@ -1,4 +1,5 @@
-[COMMANDS]
+#!/bin/sh
+echo '[COMMANDS]
 - versions
   show enable versions.
 
@@ -17,3 +18,4 @@
 [WIP]
 local -- set local version of google-chrome and chromedriver version.
 update -- update installable versions.
+'
