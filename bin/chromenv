@@ -2,7 +2,6 @@
 cd `dirname $0`
 cd ../
 CHROMENV_HOME=$(pwd)
-# CHROMENV_HOME=$HOME/.chemenv
 NOW_VERSION=$(cat $CHROMENV_HOME/default_version)
 
 if [ $1 = "versions" ]; then
