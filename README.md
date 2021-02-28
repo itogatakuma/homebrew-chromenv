@@ -10,8 +10,11 @@ MacOSのみ対応。
 - if you set `google-chrome` alias or command, remove it.
 
 - install brew package.
-  `brew tap onigiri3670/homebrew-tap`
-  `brew install -v chromenv`
+
+  ```
+  brew tap onigiri3670/homebrew-tap
+  brew install -v chromenv
+  ```
 
 ## Command Reference
 - google-chrome
