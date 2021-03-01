@@ -1,5 +1,7 @@
 #!/bin/sh
+touch $CHROMENV_ROOT/default_version
+NOW_VERSION=$(cat $CHROMENV_ROOT/default_version)
 if [ -n $NOW_VERSION]
 then
-  ls -1 $CHROMENV_HOME/versions | xargs -I {} echo "  {}" | sed "s/  $NOW_VERSION/* $NOW_VERSION/g"
+  ls -1 $CHROMENV_ROOT/versions | xargs -I {} echo "  {}" | sed "s/  $NOW_VERSION/* $NOW_VERSION/g"
 fi

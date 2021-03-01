@@ -1,25 +1,25 @@
 #!/bin/sh
 cd `dirname $0`
-cd ../
-CHROMENV_HOME=$(pwd)
-touch $CHROMENV_HOME/default_version
-NOW_VERSION=$(cat $CHROMENV_HOME/default_version)
+cd ../libexec
+LIBEXEC_ROOT=$(pwd)
+CHROMENV_ROOT=$HOME/.chromenv
 
 if [ $1 = "versions" ]; then
-  source $CHROMENV_HOME/libexec/versions
+  source $LIBEXEC_ROOT/versions
 elif [ $1 = "update" ]; then
-  source $CHROMENV_HOME/libexec/update
+  source $LIBEXEC_ROOT/update
 elif [ $1 = "install" ]; then
   if [ $2 = "-l" ]; then
-    source $CHROMENV_HOME/libexec/install-l
+    source $LIBEXEC_ROOT/install-l
   else
-    source $CHROMENV_HOME/libexec/install
+    source $LIBEXEC_ROOT/install
   fi
 elif [ $1 = "global" ]; then
-  source $CHROMENV_HOME/libexec/global
+  source $LIBEXEC_ROOT/global
 elif [ $1 = "local" ]; then
   echo "[WIP] will set local chromenv"
+elif [ $1 = "local" ]; then
+  source $LIBEXEC_ROOT/init
 elif [ $1 = "help" ]; then
-  echo "[WIP] will set local chromenv"
-  source $CHROMENV_HOME/libexec/help
+  source $LIBEXEC_ROOT/help
 fi

@@ -14,28 +14,28 @@ split_hyphen () {
   read $@
 }
 
-mkdir $CHROMENV_HOME/master
+mkdir $CHROMENV_ROOT/master
 # google-chrome
-mkdir $CHROMENV_HOME/master/google-chrome
-rm -rf $CHROMENV_HOME/master/google-chrome/versions
-mkdir $CHROMENV_HOME/master/google-chrome/versions
-curl 'https://google-chrome.en.uptodown.com/mac/apps/10755/versions' > $CHROMENV_HOME/master/google-chrome/google-chrome.json
-cat $CHROMENV_HOME/master/google-chrome/google-chrome.json | jq -r '.data[].version' > $CHROMENV_HOME/master/google-chrome/versions/mac
+mkdir $CHROMENV_ROOT/master/google-chrome
+rm -rf $CHROMENV_ROOT/master/google-chrome/versions
+mkdir $CHROMENV_ROOT/master/google-chrome/versions
+curl 'https://google-chrome.en.uptodown.com/mac/apps/10755/versions' > $CHROMENV_ROOT/master/google-chrome/google-chrome.json
+cat $CHROMENV_ROOT/master/google-chrome/google-chrome.json | jq -r '.data[].version' > $CHROMENV_ROOT/master/google-chrome/versions/mac
 
 # chromedriver
-mkdir $CHROMENV_HOME/master/chromedriver
-curl 'https://chromedriver.storage.googleapis.com/' > $CHROMENV_HOME/master/chromedriver/chromedriver.xml
-rm -rf $CHROMENV_HOME/master/chromedriver/versions
-mkdir $CHROMENV_HOME/master/chromedriver/versions
-rm -rf $CHROMENV_HOME/master/chromedriver/corresponds
-mkdir $CHROMENV_HOME/master/chromedriver/corresponds
+mkdir $CHROMENV_ROOT/master/chromedriver
+curl 'https://chromedriver.storage.googleapis.com/' > $CHROMENV_ROOT/master/chromedriver/chromedriver.xml
+rm -rf $CHROMENV_ROOT/master/chromedriver/versions
+mkdir $CHROMENV_ROOT/master/chromedriver/versions
+rm -rf $CHROMENV_ROOT/master/chromedriver/corresponds
+mkdir $CHROMENV_ROOT/master/chromedriver/corresponds
 while read_dom ENTITY URL_PATH; do
     if [[ $ENTITY = "Key" ]]; then
         while split_slash VERSION FILENAME;
         do
           if [[ ${FILENAME} =~ ^chromedriver_(.*)\.zip$ ]]; then
             CHROMEDRIVER_OS=${BASH_REMATCH[1]}
-            echo $URL_PATH >> $CHROMENV_HOME/master/chromedriver/versions/$CHROMEDRIVER_OS
+            echo $URL_PATH >> $CHROMENV_ROOT/master/chromedriver/versions/$CHROMEDRIVER_OS
           elif [[ $FILENAME = 'notes.txt' ]]; then
             sleep 1
             correspond_line=$(curl https://chromedriver.storage.googleapis.com/$URL_PATH | head -n 2 | tail -n 1)
@@ -43,13 +43,13 @@ while read_dom ENTITY URL_PATH; do
               CHROME_VERSION_RANGE=${BASH_REMATCH[1]}
               echo $CHROME_VERSION_RANGE
               while split_hyphen FROM_VERSION TO_VERSION; do
-                seq $FROM_VERSION $TO_VERSION | xargs -I{} bash -c "echo $VERSION >> $CHROMENV_HOME/master/chromedriver/corresponds/{}"
+                seq $FROM_VERSION $TO_VERSION | xargs -I{} bash -c "echo $VERSION >> $CHROMENV_ROOT/master/chromedriver/corresponds/{}"
               done <<< $CHROME_VERSION_RANGE
             elif [[ ${correspond_line} =~ ^Supports.Chrome.version.([0-9]*) ]]; then
               CHROME_VERSION=${BASH_REMATCH[1]}
-              echo $VERSION >> $CHROMENV_HOME/master/chromedriver/corresponds/$CHROME_VERSION
+              echo $VERSION >> $CHROMENV_ROOT/master/chromedriver/corresponds/$CHROME_VERSION
             fi
           fi
         done <<< $URL_PATH
     fi
-done < $CHROMENV_HOME/master/chromedriver/chromedriver.xml
+done < $CHROMENV_ROOT/master/chromedriver/chromedriver.xml
