@@ -1,6 +1,6 @@
 #!/bin/sh
 unlink /Applications/Google\ Chrome.app 2> /dev/null
-ln -s $CHROMENV_HOME/versions/$2/app/Google\ Chrome$2.app /Applications/Google\ Chrome.app
+ln -s $CHROMENV_ROOT/versions/$2/app/Google\ Chrome$2.app /Applications/Google\ Chrome.app
 unlink /usr/local/bin/chromedriver 2> /dev/null
-ln -s $CHROMENV_HOME/versions/$2/drivers/chromedriver$(cat $CHROMENV_HOME/versions/$2/drivers/default_version) /usr/local/bin/chromedriver
-echo $2 > $CHROMENV_HOME/default_version
+ln -s $CHROMENV_ROOT/versions/$2/drivers/chromedriver$(cat $CHROMENV_ROOT/versions/$2/drivers/default_version) /usr/local/bin/chromedriver
+echo $2 > $CHROMENV_ROOT/default_version

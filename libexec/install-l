@@ -4,7 +4,7 @@ split_slash () {
   read $@
 }
 
-cat $CHROMENV_HOME/master/google-chrome/versions/mac
+cat $CHROMENV_ROOT/master/google-chrome/versions/mac
 # while split_slash VERSION FILENAME; do
 #   echo $VERSION
 # done < $CHROMENV_HOME/master/chromedriver/versions/mac64
