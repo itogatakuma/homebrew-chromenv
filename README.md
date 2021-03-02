@@ -13,6 +13,14 @@ MacOSのみ対応。
 
 - if you set `google-chrome` alias or command, remove it.
 
+  ```
+  unset google-chrome
+  ```
+
+  ```
+  unalias google-chrome
+  ```
+
 - install brew package.
 
   ```
