@@ -37,7 +37,6 @@ while read_dom ENTITY URL_PATH; do
             CHROMEDRIVER_OS=${BASH_REMATCH[1]}
             echo $URL_PATH >> $CHROMENV_ROOT/master/chromedriver/versions/$CHROMEDRIVER_OS
           elif [[ $FILENAME = 'notes.txt' ]]; then
-            sleep 1
             correspond_line=$(curl https://chromedriver.storage.googleapis.com/$URL_PATH | head -n 2 | tail -n 1)
             if [[ ${correspond_line} =~ ^Supports.Chrome.v([0-9]*-[0-9]*) ]]; then
               CHROME_VERSION_RANGE=${BASH_REMATCH[1]}
