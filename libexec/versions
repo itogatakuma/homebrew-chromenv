@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -n $NOW_VERSION]
+then
+  ls -1 $CHROMENV_HOME/versions | xargs -I {} echo "  {}" | sed "s/  $NOW_VERSION/* $NOW_VERSION/g"
+fi
