@@ -6,6 +6,10 @@ MacOSのみ対応。
 ## Installation
 
 - uninstall google-chrome in your PC.
+  ```
+  rm -r /Applications/Google\ Chrome.app
+  ```
+
 
 - if you set `google-chrome` alias or command, remove it.
 
