@@ -18,7 +18,7 @@ elif [ $1 = "global" ]; then
   source $LIBEXEC_ROOT/global
 elif [ $1 = "local" ]; then
   echo "[WIP] will set local chromenv"
-elif [ $1 = "local" ]; then
+elif [ $1 = "init" ]; then
   source $LIBEXEC_ROOT/init
 elif [ $1 = "help" ]; then
   source $LIBEXEC_ROOT/help

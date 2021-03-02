@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir $CHROMENV_ROOT
+source $LIBEXEC_ROOT/update
