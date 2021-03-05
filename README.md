@@ -1,5 +1,6 @@
 # Chromenv (experimental)
-## 概要
+## About
+
 Chromenv is CLI tool to manage google-chrome and chromedriver environment.
 For MacOS.
 
