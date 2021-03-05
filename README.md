@@ -1,13 +1,15 @@
 # Chromenv (experimental)
-## 概要
-google-chromeとchromedriverのバージョン管理CLIツール。
-MacOSのみ対応。
+## About
+
+Chromenv is CLI tool to manage google-chrome and chromedriver environment.
+For MacOS.
 
 ## Installation
 
-- uninstall google-chrome in your PC.
+- backup google-chrome in your PC.
+
   ```
-  rm -r /Applications/Google\ Chrome.app
+  mv /Applications/Google\ Chrome.app /Applications/Google\ Chrome.app.bk
   ```
 
 
