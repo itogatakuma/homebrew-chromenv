@@ -27,7 +27,7 @@ For MacOS.
 
   ```
   brew tap onigiri3670/homebrew-tap
-  brew install -v chromenv
+  brew install chromenv
   ```
   
 ## How to use after installation.
