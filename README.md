@@ -29,6 +29,44 @@ For MacOS.
   brew tap onigiri3670/homebrew-tap
   brew install -v chromenv
   ```
+  
+## How to use after installation.
+
+1. initalize enable versions.
+
+  ```
+  chromenv init
+  ```
+  
+2. show enable google-chrome versoins and select.
+
+  ```
+  chromenv install -l
+  ```
+  
+3. install selected version.
+
+  ```
+  chromenv install 88.0.4324.192
+  ```
+  
+4. show installed google-chrome versions.
+
+  ```
+  chromenv versions
+  ```
+  
+5. switch global version.
+
+  ```
+  chromenv global 88.0.4324.192
+  ```
+  
+6. boot google-chrome.
+
+  ```
+  google-chrome
+  ```
 
 ## Command Reference
 - google-chrome
