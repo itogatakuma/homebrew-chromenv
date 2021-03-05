@@ -1,6 +1,5 @@
 #!/bin/sh
-cd `dirname $0`
-cd ../libexec
+cd `dirname $0`/../libexec 2> /dev/null
 LIBEXEC_ROOT=$(pwd)
 CHROMENV_ROOT=$HOME/.chromenv
 
