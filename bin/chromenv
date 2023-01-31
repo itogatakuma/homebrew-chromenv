@@ -21,4 +21,6 @@ elif [ $1 = "init" ]; then
   source $LIBEXEC_ROOT/init
 elif [ $1 = "help" ]; then
   source $LIBEXEC_ROOT/help
+else
+  source $LIBEXEC_ROOT/help
 fi
