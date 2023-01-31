@@ -18,8 +18,8 @@ mv $CHROMENV_ROOT/versions/$2/drivers/chromedriver $CHROMENV_ROOT/versions/$2/dr
 echo $2 > $CHROMENV_ROOT/versions/$2/drivers/default_version
 # chromeダウンロード
 sleep 0.5
-a_tag=$(curl $chromelinkurl | grep detail-download-button)
-if [[ $a_tag =~ href=\"([^\"]*)\" ]]; then
+a_tag=$(curl $chromelinkurl | grep 'https://dw.uptodown.com/dwn/')
+if [[ $a_tag =~ data-url=\"([^\"]*)\" ]]; then
   chromeurl=${BASH_REMATCH[1]}
   sleep 0.5
   curl -L -o $CHROMENV_ROOT/versions/$2/app/Google\ Chrome$2.dmg $chromeurl
